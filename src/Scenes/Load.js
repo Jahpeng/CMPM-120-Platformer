@@ -19,6 +19,7 @@ class Load extends Phaser.Scene {
     }
 
     create() {
+        // Basic structure copied from Professor's lectures
         this.anims.create({
             key: 'walk',
             frames: [
@@ -45,7 +46,7 @@ class Load extends Phaser.Scene {
         });
 
          // ...and pass to the next Scene
-         this.scene.start("platformerScene");
+         this.scene.start("sewage_zone");
     }
 
     // Never get here since a new scene is started in create()

@@ -16,7 +16,7 @@ const config = {
     width: 800,
     height: 740, // 600 + 140
     backgroundColor: "#1a1a2e",
-    scene: [] // first scene in the list starts
+    scene: [Load, Sewage_Zone] // first scene in the list starts
 };
 
 const game = new Phaser.Game(config);
