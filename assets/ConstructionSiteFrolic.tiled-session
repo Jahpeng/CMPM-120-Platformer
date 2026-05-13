@@ -1,0 +1,42 @@
+{
+    "activeFile": "platformer_sewage_level.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInEditor": 1
+        },
+        "platformer_sewage_level.tmx": {
+            "scale": 1.35,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 288.88888888888886,
+                "y": 116.66666666666663
+            }
+        },
+        "platformer_sewage_level.tmx#kenny_tilemap_packed": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "C:/CMPM 120/CMPM-120-Platformer/assets",
+    "last.imagePath": "C:/CMPM 120/CMPM-120-Platformer/assets",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 18,
+    "map.tileWidth": 18,
+    "map.width": 135,
+    "openFiles": [
+        "platformer_sewage_level.tmx"
+    ],
+    "project": "ConstructionSiteFrolic.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "platformer_sewage_level.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 18,
+        "width": 18
+    }
+}
