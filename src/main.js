@@ -6,15 +6,15 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
+            debug: true, // set to true to see collision box + direction of movement
             gravity: {
                 x: 0,
                 y: 0
             }
         }
     },
-    width: 800,
-    height: 740, // 600 + 140
+    width: 1440,//4320, //1440,//1440, //800,
+    height: 990, // 600 + 140
     backgroundColor: "#1a1a2e",
     scene: [Load, Sewage_Zone] // first scene in the list starts
 };
