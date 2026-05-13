@@ -56,6 +56,7 @@ class Sewage_Zone extends Phaser.Scene {
         // PLAYER SPRITE SETUP
         my.sprite.player = this.physics.add.sprite(40, 40, "player_character").setScale(0.2);
         my.sprite.player.setCollideWorldBounds(true);
+        my.sprite.player.setMaxVelocity(200, 1000); // makes sure player doesnt become a speed demon
 
         // PLAYER MOVEMENT SETUP
         this.akey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
