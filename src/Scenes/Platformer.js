@@ -12,5 +12,9 @@ class Sewage_Zone extends Phaser.Scene {
         this.JUMP_VELOCITY = -900;
     }
 
-    
+    preload(){}
+
+    create(){}
+
+    update(){}
 }
