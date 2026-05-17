@@ -14,7 +14,7 @@ const config = {
         }
     },
     width: 1440,//4320, //1440,//1440, //800,
-    height: 990, // 600 + 140
+    height: 700,//990, // 600 + 140
     backgroundColor: "#1a1a2e",
     scene: [Load, Sewage_Zone] // first scene in the list starts
 };

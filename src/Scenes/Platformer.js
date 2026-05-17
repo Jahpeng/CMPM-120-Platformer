@@ -11,6 +11,8 @@ class Sewage_Zone extends Phaser.Scene {
         this.DRAG = 700;    // DRAG < ACCELERATION = icy slide
         this.physics.world.gravity.y = 1500;
         this.JUMP_VELOCITY = -500;//-900;
+        this.SPAWNX = 40;
+        this.SPAWNY = 40;
     }
 
     preload(){
@@ -25,6 +27,7 @@ class Sewage_Zone extends Phaser.Scene {
         this.map = this.add.tilemap("platformer_sewage_level", 18, 18, 120, 20);
         // Adding tileset to map
         this.tileset = this.map.addTilesetImage("kenny_tilemap_packed", "tilemap_tiles");
+        this.tileset2 = this.map.addTilesetImage("kenny_tilemap_packed2", "tilemap_tiles2");
         //bounding layer so that player doesnt fall outa map
         this.boundLayer = this.map.createLayer("Bounding", this.tileset, 0, 0);
         this.boundLayer.setScale(.67);
@@ -32,6 +35,25 @@ class Sewage_Zone extends Phaser.Scene {
         this.boundLayer.setCollisionByProperty({
             collides: true
         });
+
+        //OBJECTS (SPAWNS, COINS, POWERUPS)
+        this.spawn = this.map.createFromObjects("SpawnPoints", {
+            name: "spawn",
+            key: "tilemap_sheet",
+            frame: 58 // the tile ID number in properties
+        })
+        // chatgpt suggested code for correctly resizing to match camera and map:
+        this.spawn.forEach(obj => {
+            obj.setScale(0.67);
+            obj.x *= 0.67;
+            obj.y *= 0.67;
+        });
+        this.physics.world.enable(this.spawn, Phaser.Physics.Arcade.STATIC_BODY);
+        this.spawnGroup = this.add.group(this.spawn);
+
+        //TEMP: JUST FOR TESTING (WORKING NOW)
+        this.TEMP = this.map.createLayer("TEMP", this.tileset2, 0, 0);
+        this.TEMP.setScale(.67);
 
         // Making ground layer
         this.groundLayer = this.map.createLayer("Ground-n-Platforms", this.tileset, 0, 0);
@@ -68,11 +90,28 @@ class Sewage_Zone extends Phaser.Scene {
         this.physics.add.collider(my.sprite.player, this.groundLayer);
         this.physics.add.collider(my.sprite.player, this.boundLayer);
 
+        //PLAYER DAMAGED IF IN SEWAGE
+        this.physics.add.overlap(my.sprite.player, this.sewageLayer, (obj1, obj2)=>{
+            let sewage = obj2.properties?.danger == true;
+
+            if (sewage){
+                setTimeout(() => {my.sprite.player.setPosition(this.SPAWNX, this.SPAWNY);}, 150);
+            }
+        })
+
+        //OBJECTS (SPAWNS, COINS, POWERUPS)
+        this.physics.add.overlap(my.sprite.player, this.spawnGroup, (obj1, obj2) => {
+           this.SPAWNX = obj2.x;
+           this.SPAWNY = obj2.y; 
+        });
+
         // PLAYER CAMERA
         this.cameras.main.startFollow(my.sprite.player, true, 0.1, 0.1);
-        this.cameras.main.setBounds(0,0,game.config.width*2, game.config.height*2);
+        // this.cameras.main.setBounds(0,0,game.config.width*2, game.config.height*2); THIS WORKS
+        this.cameras.main.setBounds(0,0,1440, 350);
         // this.cameras.main.setBounds(0,0,this.map.widthInPixels, this.map.heightInPixels);
         this.cameras.main.setFollowOffset(0,0);
+        this.cameras.main.setDeadzone(25, 25);
         this.cameras.main.setZoom(3);
 
         // fixing invisble wall issue
@@ -111,10 +150,19 @@ class Sewage_Zone extends Phaser.Scene {
         if(!my.sprite.player.body.blocked.down) {
             my.sprite.player.anims.play('jump');
         }
-        if(my.sprite.player.body.blocked.down && Phaser.Input.Keyboard.JustDown(this.spacekey)) {
-            // TODO: set a Y velocity to have the player "jump" upwards (negative Y direction)
-            my.sprite.player.body.setVelocityY(this.JUMP_VELOCITY);
+        if(my.sprite.player.body.blocked.down) {
+            this.jumps = 0;
+        }
+        // if(my.sprite.player.body.blocked.down && Phaser.Input.Keyboard.JustDown(this.spacekey)) {
+        //     // TODO: set a Y velocity to have the player "jump" upwards (negative Y direction)
+        //     my.sprite.player.body.setVelocityY(this.JUMP_VELOCITY);
 
+        // }
+        if (Phaser.Input.Keyboard.JustDown(this.spacekey)){
+            if (this.jumps < 2){
+                my.sprite.player.body.setVelocityY(this.JUMP_VELOCITY);
+                this.jumps += 1;
+            }
         }
     }
 }

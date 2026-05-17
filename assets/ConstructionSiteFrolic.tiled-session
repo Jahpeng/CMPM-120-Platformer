@@ -3,9 +3,21 @@
     "expandedProjectPaths": [
         "."
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
             "scaleInEditor": 1
+        },
+        "C:/CMPM 120/PlatformImprovement/assets/platformer-level-1.tmx": {
+            "scale": 1.014872685185185,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 431.5812282602498,
+                "y": 225.15139419513034
+            }
+        },
+        "C:/CMPM 120/PlatformImprovement/assets/platformer-level-1.tmx#kenny_tilemap_packed": {
+            "scaleInDock": 1
         },
         "platformer_sewage_level.tmx": {
             "scale": 1.35,
@@ -32,7 +44,8 @@
     "project": "ConstructionSiteFrolic.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "platformer_sewage_level.tmx"
+        "platformer_sewage_level.tmx",
+        "C:/CMPM 120/PlatformImprovement/assets/platformer-level-1.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
