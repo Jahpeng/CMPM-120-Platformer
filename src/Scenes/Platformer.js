@@ -9,7 +9,7 @@ class Sewage_Zone extends Phaser.Scene {
         // variables and settings
         this.ACCELERATION = 500; //500;
         this.DRAG = 700;    // DRAG < ACCELERATION = icy slide
-        this.physics.world.gravity.y = 1000;
+        this.physics.world.gravity.y = 1200;//1500;
         this.JUMP_VELOCITY = -400;//-500;//-900;
         this.SPAWNX = 40;
         this.SPAWNY = 40;
@@ -345,10 +345,15 @@ class Sewage_Zone extends Phaser.Scene {
             my.sprite.player.anims.play('jump');
             my.vfx.walking.stop();
             // my.sprite.player.body.setOffset(0, 0);
+            // this.jumps += 1;
             
         }
         if(my.sprite.player.body.blocked.down) {
             this.jumps = 0;
+        }
+
+        if(!my.sprite.player.body.blocked.down && this.jumps == 0) {
+            this.jumps = 1;
         }
 
         // wall jump code suggested by chatgpt
