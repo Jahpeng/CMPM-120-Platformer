@@ -9,7 +9,7 @@ class Sewage_Zone extends Phaser.Scene {
         // variables and settings
         this.ACCELERATION = 500; //500;
         this.DRAG = 700;    // DRAG < ACCELERATION = icy slide
-        this.physics.world.gravity.y = 1500;
+        this.physics.world.gravity.y = 1000;
         this.JUMP_VELOCITY = -400;//-500;//-900;
         this.SPAWNX = 40;
         this.SPAWNY = 40;
