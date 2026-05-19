@@ -6,7 +6,7 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true, // set to true to see collision box + direction of movement
+            debug: false, // set to true to see collision box + direction of movement
             gravity: {
                 x: 0,
                 y: 0

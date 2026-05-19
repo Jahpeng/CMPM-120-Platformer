@@ -48,6 +48,10 @@ class Sewage_Zone extends Phaser.Scene {
             collides: true
         });
 
+        this.backgroundLayer = this.map.createLayer("Background", this.tileset, 0, 0);
+        // this.backgroundLayer.setScale(1);
+        this.backgroundLayer.setScrollFactor(0.5);
+
         //OBJECTS (SPAWNS, COINS, POWERUPS)
         this.spawn = this.map.createFromObjects("SpawnPoints", {
             name: "spawn",
@@ -232,11 +236,13 @@ class Sewage_Zone extends Phaser.Scene {
             frame: ['star_01.png', 'star_04.png'],
             random: true,
             scale: {start: 0.03, end: 0.1},
-            maxAliveParticles: 8,
+            maxAliveParticles: 12,
             lifespan: 350,
             gravityY: -200,
             alpha: {start: 1, end: 0.1}, 
-            frequency: 100
+            frequency: 100,
+            tint: 0xC4A484,
+            blendMode: 'NORMAL',
         });
         my.vfx.walking.stop();
 
