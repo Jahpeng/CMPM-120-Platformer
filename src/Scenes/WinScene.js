@@ -9,22 +9,22 @@ class WinScene extends Phaser.Scene {
     preload(){}
 
     create(){
-        this.add.text(800, 180, "LEVEL COMPLETE!", {
+        this.add.text(700, 180, "LEVEL COMPLETE!", {
             fontSize: "64px",
             color: "#00ff80"
         }).setOrigin(0.5);
 
-        this.add.text(800, 260, "FINAL SCORE", {
+        this.add.text(700, 260, "FINAL SCORE", {
             fontSize: "28px",
             color: "#ffffff"
         }).setOrigin(0.5);
 
-        this.add.text(800, 310, this.finalScore, {
+        this.add.text(700, 310, this.finalScore, {
             fontSize: "48px",
             color: "#ffa500"
         }).setOrigin(0.5);
 
-        let restart = this.add.text(800, 420, "BACK TO TITLE", {
+        let restart = this.add.text(700, 420, "BACK TO TITLE", {
             fontSize: "40px",
             color: "#00ff00",
             backgroundColor: "#222",
